@@ -162,5 +162,45 @@
          <jersey imageName="angleterre_domicile" imageTitle="Angleterre HOME" imageId="0"/>
          <jersey imageName="angleterre_exterieur" imageTitle="Angleterre AWAY" imageId="0"/>
       </club>
+      <club imageName="argentine" imageTitle="Argentine" imageId="0">
+         <jersey imageName="argentine_domicile" imageTitle="Allemagne HOME" imageId="0"/>
+         <jersey imageName="argentine_exterieur" imageTitle="Allemagne AWAY" imageId="0"/>
+      </club>
+      <club imageName="belgique" imageTitle="Belgique" imageId="0">
+         <jersey imageName="belgique_domicile" imageTitle="Belgique HOME" imageId="0"/>
+         <jersey imageName="belgique_exterieur" imageTitle="Belgique AWAY" imageId="0"/>
+      </club>
+      <club imageName="bresil" imageTitle="Bresil" imageId="0">
+         <jersey imageName="bresil_domicile" imageTitle="Bresil HOME" imageId="0"/>
+         <jersey imageName="bresil_exterieur" imageTitle="Bresil AWAY" imageId="0"/>
+      </club>
+      <club imageName="colombie" imageTitle="Colombie" imageId="0">
+         <jersey imageName="colombie_domicile" imageTitle="Colombie HOME" imageId="0"/>
+         <jersey imageName="colombie_exterieur" imageTitle="Colombie AWAY" imageId="0"/>
+      </club>
+      <club imageName="japon" imageTitle="Japon" imageId="0">
+         <jersey imageName="japon_domicile" imageTitle="Japon HOME" imageId="0"/>
+         <jersey imageName="japon_exterieur" imageTitle="Japon AWAY" imageId="0"/>
+      </club>
+      <club imageName="mexique" imageTitle="Mexique" imageId="0">
+         <jersey imageName="mexique_domicile" imageTitle="Mexique HOME" imageId="0"/>
+         <jersey imageName="mexique_exterieur" imageTitle="Mexique AWAY" imageId="0"/>
+      </club>
+      <club imageName="russie" imageTitle="Russie" imageId="0">
+         <jersey imageName="russie_domicile" imageTitle="Russie HOME" imageId="0"/>
+         <jersey imageName="russie_exterieur" imageTitle="Russie AWAY" imageId="0"/>
+      </club>
+      <club imageName="suede" imageTitle="Suede" imageId="0">
+         <jersey imageName="suede_domicile" imageTitle="Suede HOME" imageId="0"/>
+         <jersey imageName="suede_exterieur" imageTitle="Suede AWAY" imageId="0"/>
+      </club>
+      <club imageName="ukraine" imageTitle="Ukraine" imageId="0">
+         <jersey imageName="ukraine_domicile" imageTitle="Ukraine HOME" imageId="0"/>
+         <jersey imageName="ukraine_exterieur" imageTitle="Ukraine AWAY" imageId="0"/>
+      </club>
+      <club imageName="uruguay" imageTitle="Uruguay" imageId="0">
+         <jersey imageName="uruguay_domicile" imageTitle="Uruguay HOME" imageId="0"/>
+         <jersey imageName="uruguay_exterieur" imageTitle="Uruguay AWAY" imageId="0"/>
+      </club>
    </championship>
 </football>

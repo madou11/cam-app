@@ -5,8 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,42 +30,37 @@ public class ImageAdapter extends BaseAdapter {
 		LayoutInflater inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		View gridView;
+		View gridView = null;
 
 		if (convertView == null) {
-
-			gridView = new View(this.context);
-
-			AbstractImageModel model = this.items.get(position);
-
-			// get layout from mobile.xml
-			gridView = inflater.inflate(R.layout.grid_template_item, null);
-
-			// set value into textview
-			TextView textView = (TextView) gridView
-					.findViewById(R.id.grid_item_label);
-			textView.setText(model.getImageTitle());
-
 			Resources resources = this.context.getResources();
 
+			AbstractImageModel model = this.items.get(position);
 			int ressourceId = resources.getIdentifier(model.getImageName(),
-					"drawable", this.context.getPackageName());
+					resources.getString(R.string.drawable_folder), this.context.getPackageName());
 
+			gridView = new View(this.context);
 			if (ressourceId != 0) {
-				try {
-					WeakReference<Drawable> reference = new WeakReference<Drawable>(
-							resources.getDrawable(ressourceId));
-					// WeakReference<Bitmap> reference = new
-					// WeakReference<Bitmap>(
-					// BitmapFactory.decodeResource(resources, ressourceId));
 
-					// set image based on selected text
-					ImageView imageView = (ImageView) gridView
-							.findViewById(R.id.grid_item_image);
+				gridView = inflater.inflate(R.layout.grid_template_item, null);
 
-					imageView.setImageDrawable(reference.get());
-				} catch (Exception e) {
-					e.printStackTrace();
+				// set value into textview
+				TextView textView = (TextView) gridView
+						.findViewById(R.id.grid_item_label);
+				textView.setText(model.getImageTitle());
+
+				if (ressourceId != 0) {
+					try {
+						WeakReference<Drawable> reference = new WeakReference<Drawable>(
+								resources.getDrawable(ressourceId));
+
+						ImageView imageView = (ImageView) gridView
+								.findViewById(R.id.grid_item_image);
+
+						imageView.setImageDrawable(reference.get());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 

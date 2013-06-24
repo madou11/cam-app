@@ -1,6 +1,7 @@
 package com.mac.android.goalmania.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +15,7 @@ public class Jersey extends AbstractImageModel implements Serializable {
 	@Override
 	public List<?> getItems() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList();
 	}
 	
 	
