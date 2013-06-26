@@ -16,7 +16,7 @@ import com.mac.android.goalmania.model.AbstractImageModel;
 public class ZoomActivity extends GeneralActivity implements OnClickListener {
 
 	private AbstractImageModel model;
-	ImageView imageView;
+	private ImageView imageView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

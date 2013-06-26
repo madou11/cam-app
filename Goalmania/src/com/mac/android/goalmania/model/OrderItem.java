@@ -1,20 +1,22 @@
 package com.mac.android.goalmania.model;
 
+import java.util.UUID;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
 
 public class OrderItem {
+	@Attribute
+	private UUID ref;
 	@Attribute(required=false)
 	private int id;
 	@Attribute(required=false)
 	private String description;
 	@Element
 	private Jersey jersey;
-
 	@Element
 	private JerseyType type;
-	
 	@Element
 	private JerseySize size;
 	@Element
@@ -24,6 +26,9 @@ public class OrderItem {
 	@Element
 	private boolean patched = false;
 	
+	public OrderItem() {
+		ref = UUID.randomUUID();
+	}
 	
 	public int getId() {
 		return id;
@@ -37,7 +42,6 @@ public class OrderItem {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 	public JerseyType getType() {
 		return type;
 	}
@@ -73,6 +77,9 @@ public class OrderItem {
 	}
 	public void setPatched(boolean patched) {
 		this.patched = patched;
+	}
+	public UUID getRef() {
+		return ref;
 	}
 
 }

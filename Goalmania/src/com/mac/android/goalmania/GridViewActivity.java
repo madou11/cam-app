@@ -17,7 +17,6 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -41,16 +40,13 @@ public class GridViewActivity extends GeneralActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gridview_generic);
 
-		ActionBar ab = getSupportActionBar();
-		ab.setDisplayHomeAsUpEnabled(true);
-
 		initInterface();
 
 		getIntentData();
+		
 		if (model != null) {
 			processActivity();
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")
