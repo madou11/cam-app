@@ -15,6 +15,12 @@
     <color name="solid_green">#f0f0</color>
     <color name="solid_yellow">#ffffff00</color>
     
+    
+    <color name="grey_fonce">#C0C0C0</color>
+    <color name="grey_claire">#E6E6E6</color>
     <color name="white">#FFFFFF</color>
+    
+    
+    <color name="pressed_example">#CCE4E4E4</color>
 
 </resources>

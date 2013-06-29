@@ -1,14 +1,12 @@
 package com.mac.android.goalmania;
 
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.List;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;

@@ -1,6 +1,8 @@
 package com.mac.android.goalmania;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -12,13 +14,19 @@ import com.actionbarsherlock.view.MenuItem;
 
 public abstract class GeneralActivity extends SherlockActivity {
 
+	protected ActionBar ab;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		ActionBar ab = getSupportActionBar();
+		ab = getSupportActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
+		//ab.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
+		//ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
 
+	//	ab.setBackgroundDrawable(new ColorDrawable(R.color.white).getCurrent());
+		initTitle(ab);
 	}
 
 	protected final void restartActivity() {
@@ -34,7 +42,7 @@ public abstract class GeneralActivity extends SherlockActivity {
 		ActionBar mActionBar = getSupportActionBar();
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setDisplayHomeAsUpEnabled(true);
-		mActionBar.setDisplayShowHomeEnabled(false);
+		mActionBar.setDisplayShowHomeEnabled(true);
 		return mActionBar;
 	}
 
@@ -76,4 +84,5 @@ public abstract class GeneralActivity extends SherlockActivity {
 	
 	protected abstract void processActivity();
 
+	protected abstract void initTitle(ActionBar bar);
 }

@@ -2,205 +2,205 @@
 <football imageName="foot" imageTitle="foot ball" imageId="0">
    <championship imageName="ligue1" imageTitle="Ligue 1" imageId="0">
       <club imageName="psg" imageTitle="PSG" imageId="0">
-         <jersey imageName="psg_domicile" imageTitle="PSG HOME" imageId="0"/>
-         <jersey imageName="psg_exterieur" imageTitle="PSG AWAY" imageId="0"/>
+         <jersey imageName="psg_domicile" imageTitle="PSG HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="psg_exterieur" imageTitle="PSG AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="om" imageTitle="OM" imageId="0">
-         <jersey imageName="om_domicile" imageTitle="OM HOME" imageId="0"/>
-         <jersey imageName="om_exterieur" imageTitle="OM AWAY" imageId="0"/>
-         <jersey imageName="om_third" imageTitle="OM THIRD" imageId="0"/>
+         <jersey imageName="om_domicile" imageTitle="OM HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="om_exterieur" imageTitle="OM AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
+         <jersey imageName="om_third" imageTitle="OM THIRD" imageId="0" year="2013-2014" type="Third"/>
       </club>
-      <club imageName="lyon" imageTitle="LOSC" imageId="0">
-         <jersey imageName="lyon_domicile" imageTitle="OL HOME" imageId="0"/>
-         <jersey imageName="lyon_exterieur" imageTitle="OL AWAY" imageId="0"/>
+      <club imageName="lyon" imageTitle="OL" imageId="0">
+         <jersey imageName="lyon_domicile" imageTitle="OL HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="lyon_exterieur" imageTitle="OL AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="lille" imageTitle="LOSC" imageId="0">
-         <jersey imageName="lille_domicile" imageTitle="LOSC HOME" imageId="0"/>
-         <jersey imageName="lille_exterieur" imageTitle="LOSC AWAY" imageId="0"/>
+         <jersey imageName="lille_domicile" imageTitle="LOSC HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="lille_exterieur" imageTitle="LOSC AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="monaco" imageTitle="Monaco" imageId="0">
-         <jersey imageName="monaco_domicile" imageTitle="Monaco HOME" imageId="0"/>
-         <jersey imageName="monaco_exterieur" imageTitle="Monaco AWAY" imageId="0"/>
+         <jersey imageName="monaco_domicile" imageTitle="Monaco HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="monaco_exterieur" imageTitle="Monaco AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="premierleague" imageTitle="Premier league" imageId="0">
       <club imageName="manchesterunited" imageTitle="Manchester utd" imageId="0">
-         <jersey imageName="manchesterunited_domicile" imageTitle="Manchester utd HOME" imageId="0"/>
-         <jersey imageName="manchesterunited_exterieur" imageTitle="Manchester utd AWAY" imageId="0"/>
+         <jersey imageName="manchesterunited_domicile" imageTitle="Manchester utd HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="manchesterunited_exterieur" imageTitle="Manchester utd AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="arsenal" imageTitle="Arsenal" imageId="0">
-         <jersey imageName="arsenal_domicile" imageTitle="Arsenal HOME" imageId="0"/>
-         <jersey imageName="arsenal_exterieur" imageTitle="Arsenal AWAY" imageId="0"/>
+         <jersey imageName="arsenal_domicile" imageTitle="Arsenal HOME" imageId="0" year="2013-2014" type="Domicile" type="Domicile"/>
+         <jersey imageName="arsenal_exterieur" imageTitle="Arsenal AWAY" imageId="0" year="2013-2014" type="Domicile" type="Exterieur"/>
       </club>
       <club imageName="manchestercity" imageTitle="Manchester city" imageId="0">
-         <jersey imageName="manchestercity_domicile" imageTitle="Manchester city HOME" imageId="0"/>
-         <jersey imageName="manchestercity_exterieur" imageTitle="Manchester city AWAY" imageId="0"/>
+         <jersey imageName="manchestercity_domicile" imageTitle="Manchester city HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="manchestercity_exterieur" imageTitle="Manchester city AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="chelsea" imageTitle="Chelsea" imageId="0">
-         <jersey imageName="chelsea_domicile" imageTitle="Chelsea HOME" imageId="0"/>
-         <jersey imageName="chelsea_exterieur" imageTitle="Chelsea AWAY" imageId="0"/>
+         <jersey imageName="chelsea_domicile" imageTitle="Chelsea HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="chelsea_exterieur" imageTitle="Chelsea AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="tottenham" imageTitle="Tottenham" imageId="0">
-         <jersey imageName="tottenham_domicile" imageTitle="Tottenham HOME" imageId="0"/>
-         <jersey imageName="tottenham_exterieur" imageTitle="Tottenham AWAY" imageId="0"/>
+         <jersey imageName="tottenham_domicile" imageTitle="Tottenham HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="tottenham_exterieur" imageTitle="Tottenham AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="liverpool" imageTitle="Liverpool" imageId="0">
-         <jersey imageName="liverpool_domicile" imageTitle="Liverpool HOME" imageId="0"/>
-         <jersey imageName="liverpool_exterieur" imageTitle="Liverpool AWAY" imageId="0"/>
+         <jersey imageName="liverpool_domicile" imageTitle="Liverpool HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="liverpool_exterieur" imageTitle="Liverpool AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="liga" imageTitle="Liga" imageId="0">
       <club imageName="barcelone" imageTitle="Fc Barcelone" imageId="0">
-         <jersey imageName="barcelone_domicile" imageTitle="Barcelone HOME" imageId="0"/>
-         <jersey imageName="barcelone_exterieur" imageTitle="Barcelone AWAY" imageId="0"/>
+         <jersey imageName="barcelone_domicile" imageTitle="Barcelone HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="barcelone_exterieur" imageTitle="Barcelone AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="realmadrid" imageTitle="Real madrid" imageId="0">
-         <jersey imageName="realmadrid_domicile" imageTitle="Real madrid HOME" imageId="0"/>
-         <jersey imageName="realmadrid_exterieur" imageTitle="Real madrid AWAY" imageId="0"/>
+         <jersey imageName="realmadrid_domicile" imageTitle="Real madrid HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="realmadrid_exterieur" imageTitle="Real madrid AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="athleticomadrid" imageTitle="Athletico madrid" imageId="0">
-         <jersey imageName="athleticomadrid_domicile" imageTitle="Athletico madrid HOME" imageId="0"/>
-         <jersey imageName="athleticomadrid_exterieur" imageTitle="Athletico madrid AWAY" imageId="0"/>
+         <jersey imageName="athleticomadrid_domicile" imageTitle="Athletico madrid HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="athleticomadrid_exterieur" imageTitle="Athletico madrid AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="valence" imageTitle="FC Valence" imageId="0">
-         <jersey imageName="valence_domicile" imageTitle="Valence HOME" imageId="0"/>
-         <jersey imageName="valence_exterieur" imageTitle="Valence AWAY" imageId="0"/>
+         <jersey imageName="valence_domicile" imageTitle="Valence HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="valence_exterieur" imageTitle="Valence AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="malaga" imageTitle="Malaga" imageId="0">
-         <jersey imageName="malaga_domicile" imageTitle="Malaga HOME" imageId="0"/>
-         <jersey imageName="malaga_exterieur" imageTitle="Malaga AWAY" imageId="0"/>
+         <jersey imageName="malaga_domicile" imageTitle="Malaga HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="malaga_exterieur" imageTitle="Malaga AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="seville" imageTitle="Seville" imageId="0">
-         <jersey imageName="seville_domicile" imageTitle="Seville HOME" imageId="0"/>
-         <jersey imageName="seville_exterieur" imageTitle="Seville AWAY" imageId="0"/>
+         <jersey imageName="seville_domicile" imageTitle="Seville HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="seville_exterieur" imageTitle="Seville AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="calcio" imageTitle="Seri A" imageId="0">
       <club imageName="juventus" imageTitle="Juventus turin" imageId="0">
-         <jersey imageName="juventus_domicile" imageTitle="Juventus turin HOME" imageId="0"/>
-         <jersey imageName="juventus_exterieur" imageTitle="Juventus turin AWAY" imageId="0"/>
+         <jersey imageName="juventus_domicile" imageTitle="Juventus turin HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="juventus_exterieur" imageTitle="Juventus turin AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="milan" imageTitle="Milan ac" imageId="0">
-         <jersey imageName="milan_domicile" imageTitle="Milan ac HOME" imageId="0"/>
-         <jersey imageName="milan_exterieur" imageTitle="Milan ac AWAY" imageId="0"/>
+         <jersey imageName="milan_domicile" imageTitle="Milan ac HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="milan_exterieur" imageTitle="Milan ac AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="intermilan" imageTitle="Inter milan" imageId="0">
-         <jersey imageName="intermilan_domicile" imageTitle="Inter milan HOME" imageId="0"/>
-         <jersey imageName="intermilan_exterieur" imageTitle="Inter milan AWAY" imageId="0"/>
+         <jersey imageName="intermilan_domicile" imageTitle="Inter milan HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="intermilan_exterieur" imageTitle="Inter milan AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="lazio" imageTitle="Lazio" imageId="0">
-         <jersey imageName="lazio_domicile" imageTitle="Lazio HOME" imageId="0"/>
-         <jersey imageName="lazio_exterieur" imageTitle="Lazio AWAY" imageId="0"/>
+         <jersey imageName="lazio_domicile" imageTitle="Lazio HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="lazio_exterieur" imageTitle="Lazio AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="roma" imageTitle="AS Roma" imageId="0">
-         <jersey imageName="roma_domicile" imageTitle="AS Roma HOME" imageId="0"/>
-         <jersey imageName="roma_exterieur" imageTitle="AS Roma AWAY" imageId="0"/>
+         <jersey imageName="roma_domicile" imageTitle="AS Roma HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="roma_exterieur" imageTitle="AS Roma AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="naples" imageTitle="Naples" imageId="0">
-         <jersey imageName="naples_domicile" imageTitle="Naples HOME" imageId="0"/>
-         <jersey imageName="naples_exterieur" imageTitle="Naples AWAY" imageId="0"/>
+         <jersey imageName="naples_domicile" imageTitle="Naples HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="naples_exterieur" imageTitle="Naples AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="bundesliga" imageTitle="Bundesliga" imageId="0">
       <club imageName="bayernmunich" imageTitle="Bayern munich" imageId="0">
-         <jersey imageName="bayernmunich_domicile" imageTitle="Bayern munich HOME" imageId="0"/>
-         <jersey imageName="bayernmunich_exterieur" imageTitle="Bayern munich AWAY" imageId="0"/>
+         <jersey imageName="bayernmunich_domicile" imageTitle="Bayern munich HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="bayernmunich_exterieur" imageTitle="Bayern munich AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="borussiadortmund" imageTitle="Borussia dortmund" imageId="0">
-         <jersey imageName="borussiadortmund_domicile" imageTitle="Borussia dortmund HOME" imageId="0"/>
-         <jersey imageName="borussiadortmund_exterieur" imageTitle="Borussia dortmund AWAY" imageId="0"/>
+         <jersey imageName="borussiadortmund_domicile" imageTitle="Borussia dortmund HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="borussiadortmund_exterieur" imageTitle="Borussia dortmund AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="schalke" imageTitle="Schalke 04" imageId="0">
-         <jersey imageName="schalke_domicile" imageTitle="Schalke 04 HOME" imageId="0"/>
-         <jersey imageName="schalke_exterieur" imageTitle="Schalke 04 AWAY" imageId="0"/>
+         <jersey imageName="schalke_domicile" imageTitle="Schalke 04 HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="schalke_exterieur" imageTitle="Schalke 04 AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="autres" imageTitle="Autres" imageId="0">
       <club imageName="porto" imageTitle="FC Porto" imageId="0">
-         <jersey imageName="porto_domicile" imageTitle="FC Porto HOME" imageId="0"/>
-         <jersey imageName="porto_exterieur" imageTitle="FC Porto AWAY" imageId="0"/>
+         <jersey imageName="porto_domicile" imageTitle="FC Porto HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="porto_exterieur" imageTitle="FC Porto AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
    
    
    <championship imageName="international" imageTitle="International" imageId="0">
       <club imageName="france" imageTitle="France" imageId="0">
-         <jersey imageName="france_domicile" imageTitle="France HOME" imageId="0"/>
-         <jersey imageName="france_exterieur" imageTitle="France AWAY" imageId="0"/>
+         <jersey imageName="france_domicile" imageTitle="France HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="france_exterieur" imageTitle="France AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="allemagne" imageTitle="Allemagne" imageId="0">
-         <jersey imageName="allemagne_domicile" imageTitle="Allemagne HOME" imageId="0"/>
-         <jersey imageName="allemagne_exterieur" imageTitle="Allemagne AWAY" imageId="0"/>
+         <jersey imageName="allemagne_domicile" imageTitle="Allemagne HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="allemagne_exterieur" imageTitle="Allemagne AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="italie" imageTitle="Italie" imageId="0">
-         <jersey imageName="italie_domicile" imageTitle="Italie HOME" imageId="0"/>
-         <jersey imageName="italie_exterieur" imageTitle="Italie AWAY" imageId="0"/>
+         <jersey imageName="italie_domicile" imageTitle="Italie HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="italie_exterieur" imageTitle="Italie AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="espagne" imageTitle="Espagne" imageId="0">
-         <jersey imageName="espagne_domicile" imageTitle="Espagne HOME" imageId="0"/>
-         <jersey imageName="espagne_exterieur" imageTitle="Espagne AWAY" imageId="0"/>
+         <jersey imageName="espagne_domicile" imageTitle="Espagne HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="espagne_exterieur" imageTitle="Espagne AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="paysbas" imageTitle="Pays bas" imageId="0">
-         <jersey imageName="paysbas_domicile" imageTitle="Pays bas HOME" imageId="0"/>
-         <jersey imageName="paysbas_exterieur" imageTitle="Pays bas AWAY" imageId="0"/>
+         <jersey imageName="paysbas_domicile" imageTitle="Pays bas HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="paysbas_exterieur" imageTitle="Pays bas AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="portugal" imageTitle="Portugal" imageId="0">
-         <jersey imageName="portugal_domicile" imageTitle="Portugal HOME" imageId="0"/>
-         <jersey imageName="portugal_exterieur" imageTitle="Portugal AWAY" imageId="0"/>
+         <jersey imageName="portugal_domicile" imageTitle="Portugal HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="portugal_exterieur" imageTitle="Portugal AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="angleterre" imageTitle="Angleterre" imageId="0">
-         <jersey imageName="angleterre_domicile" imageTitle="Angleterre HOME" imageId="0"/>
-         <jersey imageName="angleterre_exterieur" imageTitle="Angleterre AWAY" imageId="0"/>
+         <jersey imageName="angleterre_domicile" imageTitle="Angleterre HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="angleterre_exterieur" imageTitle="Angleterre AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="argentine" imageTitle="Argentine" imageId="0">
-         <jersey imageName="argentine_domicile" imageTitle="Allemagne HOME" imageId="0"/>
-         <jersey imageName="argentine_exterieur" imageTitle="Allemagne AWAY" imageId="0"/>
+         <jersey imageName="argentine_domicile" imageTitle="Allemagne HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="argentine_exterieur" imageTitle="Allemagne AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="belgique" imageTitle="Belgique" imageId="0">
-         <jersey imageName="belgique_domicile" imageTitle="Belgique HOME" imageId="0"/>
-         <jersey imageName="belgique_exterieur" imageTitle="Belgique AWAY" imageId="0"/>
+         <jersey imageName="belgique_domicile" imageTitle="Belgique HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="belgique_exterieur" imageTitle="Belgique AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="bresil" imageTitle="Bresil" imageId="0">
-         <jersey imageName="bresil_domicile" imageTitle="Bresil HOME" imageId="0"/>
-         <jersey imageName="bresil_exterieur" imageTitle="Bresil AWAY" imageId="0"/>
+         <jersey imageName="bresil_domicile" imageTitle="Bresil HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="bresil_exterieur" imageTitle="Bresil AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="colombie" imageTitle="Colombie" imageId="0">
-         <jersey imageName="colombie_domicile" imageTitle="Colombie HOME" imageId="0"/>
-         <jersey imageName="colombie_exterieur" imageTitle="Colombie AWAY" imageId="0"/>
+         <jersey imageName="colombie_domicile" imageTitle="Colombie HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="colombie_exterieur" imageTitle="Colombie AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="japon" imageTitle="Japon" imageId="0">
-         <jersey imageName="japon_domicile" imageTitle="Japon HOME" imageId="0"/>
-         <jersey imageName="japon_exterieur" imageTitle="Japon AWAY" imageId="0"/>
+         <jersey imageName="japon_domicile" imageTitle="Japon HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="japon_exterieur" imageTitle="Japon AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="mexique" imageTitle="Mexique" imageId="0">
-         <jersey imageName="mexique_domicile" imageTitle="Mexique HOME" imageId="0"/>
-         <jersey imageName="mexique_exterieur" imageTitle="Mexique AWAY" imageId="0"/>
+         <jersey imageName="mexique_domicile" imageTitle="Mexique HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="mexique_exterieur" imageTitle="Mexique AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="russie" imageTitle="Russie" imageId="0">
-         <jersey imageName="russie_domicile" imageTitle="Russie HOME" imageId="0"/>
-         <jersey imageName="russie_exterieur" imageTitle="Russie AWAY" imageId="0"/>
+         <jersey imageName="russie_domicile" imageTitle="Russie HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="russie_exterieur" imageTitle="Russie AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="suede" imageTitle="Suede" imageId="0">
-         <jersey imageName="suede_domicile" imageTitle="Suede HOME" imageId="0"/>
-         <jersey imageName="suede_exterieur" imageTitle="Suede AWAY" imageId="0"/>
+         <jersey imageName="suede_domicile" imageTitle="Suede HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="suede_exterieur" imageTitle="Suede AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="ukraine" imageTitle="Ukraine" imageId="0">
-         <jersey imageName="ukraine_domicile" imageTitle="Ukraine HOME" imageId="0"/>
-         <jersey imageName="ukraine_exterieur" imageTitle="Ukraine AWAY" imageId="0"/>
+         <jersey imageName="ukraine_domicile" imageTitle="Ukraine HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="ukraine_exterieur" imageTitle="Ukraine AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
       <club imageName="uruguay" imageTitle="Uruguay" imageId="0">
-         <jersey imageName="uruguay_domicile" imageTitle="Uruguay HOME" imageId="0"/>
-         <jersey imageName="uruguay_exterieur" imageTitle="Uruguay AWAY" imageId="0"/>
+         <jersey imageName="uruguay_domicile" imageTitle="Uruguay HOME" imageId="0" year="2013-2014" type="Domicile"/>
+         <jersey imageName="uruguay_exterieur" imageTitle="Uruguay AWAY" imageId="0" year="2013-2014" type="Exterieur"/>
       </club>
    </championship>
 </football>

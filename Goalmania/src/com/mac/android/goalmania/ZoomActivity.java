@@ -8,21 +8,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.model.AbstractImageModel;
 
 public class ZoomActivity extends GeneralActivity implements OnClickListener {
 
 	private AbstractImageModel model;
 	private ImageView imageView;
+	private GoalmaniaContext ctx;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_zoom);
+
+		ctx = (GoalmaniaContext) getApplicationContext();
+
 		initInterface();
 		getIntentData();
 		processActivity();
@@ -39,18 +45,15 @@ public class ZoomActivity extends GeneralActivity implements OnClickListener {
 		case android.R.id.home:
 			finish();
 			return true;
-			// case R.id.im_button_ajout:
-			// Intent intent = new Intent(DetailRepasActivity.this,
-			// AjoutAlimentRepas.class);
-			// intent.putExtra("fr.calfast.idRepas", idRepas);
-			// startActivityForResult(intent, 1);
-			// return true;
+		case R.id.im_button_ajout:
+			System.out.println("ee");
+
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
+
 	@Override
 	public void onClick(View v) {
 		finish();
@@ -64,7 +67,7 @@ public class ZoomActivity extends GeneralActivity implements OnClickListener {
 	@Override
 	protected void getIntentData() {
 		this.model = (AbstractImageModel) getIntent().getExtras()
-				.getSerializable("GridViewListItemValue");
+				.getSerializable("JerseyValue");
 	}
 
 	@Override
@@ -98,5 +101,10 @@ public class ZoomActivity extends GeneralActivity implements OnClickListener {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	protected void initTitle(ActionBar bar) {
+		bar.setTitle(R.string.jersey_title);
 	}
 }

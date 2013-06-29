@@ -1,5 +1,6 @@
 package com.mac.android.goalmania.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,31 +15,34 @@ public class Order {
 	private int id;
 	@Element
 	private String description;
-	@ElementList(inline=true)
+	@ElementList(inline = true)
 	private List<OrderItem> items;
 
-	
 	public Order() {
 		ref = UUID.randomUUID();
+		items = new ArrayList<OrderItem>();
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public List<OrderItem> getItems() {
 		return items;
 	}
-	public void setItems(List<OrderItem> items) {
-		this.items = items;
-	}
+
 	public UUID getRef() {
 		return ref;
 	}

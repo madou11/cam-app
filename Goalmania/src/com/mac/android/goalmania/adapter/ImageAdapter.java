@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mac.android.goalmania.R;
+import com.mac.android.goalmania.helper.DrawableRessourceHelper;
 import com.mac.android.goalmania.model.AbstractImageModel;
 
 public class ImageAdapter extends BaseAdapter {
@@ -49,19 +50,11 @@ public class ImageAdapter extends BaseAdapter {
 						.findViewById(R.id.grid_item_label);
 				textView.setText(model.getImageTitle());
 
-				if (ressourceId != 0) {
-					try {
-						WeakReference<Drawable> reference = new WeakReference<Drawable>(
-								resources.getDrawable(ressourceId));
 
-						ImageView imageView = (ImageView) gridView
-								.findViewById(R.id.grid_item_image);
-
-						imageView.setImageDrawable(reference.get());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
+				ImageView imageView = (ImageView) gridView
+						.findViewById(R.id.grid_item_image);
+				
+				DrawableRessourceHelper.getDrawableImageViewById(imageView, ressourceId);
 			}
 
 		} else {

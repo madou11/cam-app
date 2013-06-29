@@ -4,8 +4,26 @@
     <string name="app_name">Goalmania</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    
     <string name="drawable_folder">drawable</string>
     <string name="jersey_resources">resources.xml</string>
+    
+    <string name="team_name_label">Equipe</string>
+    <string name="type_jersey_label">Type</string>
+    <string name="year_jersey_label">Année</string>
+
+    
+    <string name="championship_title">Championats</string>
+    <string name="club_title">Clubs</string>
+    <string name="team_title">Equipes</string>
+    <string name="jersey_title">Maillots</string>
+    
+    
+    
+    <string name="title_activity_jersey_detail">JerseyDetailActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    
+    
 
 </resources>

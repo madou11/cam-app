@@ -4,6 +4,11 @@ import org.simpleframework.xml.Attribute;
 
 
 public abstract class AbstractImageModel implements Collectionable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6980039928464903600L;
+	
 	@Attribute
 	String imageName;
 	@Attribute

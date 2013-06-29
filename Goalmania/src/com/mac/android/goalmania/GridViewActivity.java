@@ -17,11 +17,15 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.mac.android.goalmania.adapter.ImageAdapter;
+import com.mac.android.goalmania.context.GoalmaniaContext;
+import com.mac.android.goalmania.helper.DrawableRessourceHelper;
 import com.mac.android.goalmania.model.AbstractImageModel;
+import com.mac.android.goalmania.model.Championship;
 import com.mac.android.goalmania.model.Club;
 import com.mac.android.goalmania.model.Collectionable;
 import com.mac.android.goalmania.model.Football;
@@ -43,9 +47,27 @@ public class GridViewActivity extends GeneralActivity {
 		initInterface();
 
 		getIntentData();
-		
+
+		initTitle(ab);
+
 		if (model != null) {
 			processActivity();
+		}
+	}
+
+	protected void initTitle(ActionBar bar) {
+		if (model != null) {
+			if (model instanceof Football) {
+				bar.setTitle(R.string.championship_title);
+			} else if (model instanceof Championship) {
+				bar.setTitle(R.string.club_title);
+			}
+
+			bar.setLogo(DrawableRessourceHelper.getDrawableByName(
+					model.getImageName(), this));
+			bar.setSubtitle(model.getImageTitle());
+			
+			
 		}
 	}
 
@@ -88,17 +110,16 @@ public class GridViewActivity extends GeneralActivity {
 		case android.R.id.home:
 			finish();
 			return true;
-			// case R.id.im_button_ajout:
+		case R.id.im_button_ajout:
 			// Intent intent = new Intent(DetailRepasActivity.this,
 			// AjoutAlimentRepas.class);
 			// intent.putExtra("fr.calfast.idRepas", idRepas);
 			// startActivityForResult(intent, 1);
-			// return true;
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
 
 	@Override
 	protected void initInterface() {
@@ -130,7 +151,7 @@ public class GridViewActivity extends GeneralActivity {
 	@Override
 	protected void putIntentData() {
 
-		if (!(model instanceof Club)) {
+		if (!(model instanceof Championship)) {
 			isFirstLoad = false;
 			Intent intent = new Intent(getApplicationContext(),
 					GridViewActivity.class);
@@ -145,12 +166,11 @@ public class GridViewActivity extends GeneralActivity {
 					((TextView) view.findViewById(R.id.grid_item_label))
 							.getText(), Toast.LENGTH_SHORT).show();
 		} else {
+
 			Intent intent = new Intent(getApplicationContext(),
-					ZoomActivity.class);
-			intent.putExtra(
-					"GridViewListItemValue",
-					(Serializable) ((Collectionable) model).getItems().get(
-							positionId));
+					JerseyDetailActivity.class);
+			intent.putExtra("ClubValue", (Club) model.getItems()
+					.get(positionId));
 			startActivity(intent);
 
 		}
