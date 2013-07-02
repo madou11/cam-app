@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -31,7 +29,7 @@ import com.mac.android.goalmania.model.Jersey;
 import com.mac.android.goalmania.model.Order;
 import com.mac.android.goalmania.model.OrderItem;
 
-public class JerseyDetailActivity extends GeneralFragmentActivity {
+public class JerseyDetailActivity extends CustomFragment {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -54,15 +52,20 @@ public class JerseyDetailActivity extends GeneralFragmentActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+//		setLayoutIds(R.layout.ws_munday_slidingmenu_test_menu,
+//				R.layout.activity_gridview_generic);
+//		setAnimationDuration(300);
+//		setAnimationType(MENU_TYPE_SLIDEOVER);
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jersey_detail);
 
 		ctx = (GoalmaniaContext) getApplicationContext();
 
-		this.model = (Club) getIntent().getExtras()
-				.getSerializable("ClubValue");
-
-		initTitle(ab);
+//		getIntentData();
+//
+//		initTitle(ab);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -209,8 +212,8 @@ public class JerseyDetailActivity extends GeneralFragmentActivity {
 
 	@Override
 	protected void getIntentData() {
-		// TODO Auto-generated method stub
-
+		this.model = (Club) getIntent().getExtras()
+				.getSerializable("ClubValue");
 	}
 
 	@Override
@@ -221,8 +224,7 @@ public class JerseyDetailActivity extends GeneralFragmentActivity {
 
 	@Override
 	protected Object loadDataBase() {
-		// TODO Auto-generated method stub
-		return null;
+	return null;
 	}
 
 	@Override
@@ -242,36 +244,4 @@ public class JerseyDetailActivity extends GeneralFragmentActivity {
 			// bar.addTab(bar.newTab().setText("mac"));
 		}
 	}
-
-	protected class MyTabsListener implements ActionBar.TabListener {
-
-		private Fragment fragment;
-
-		public MyTabsListener() {
-			// TODO Auto-generated constructor stub
-		}
-
-		public MyTabsListener(Fragment fragment) {
-			this.fragment = fragment;
-		}
-
-		public void onTabReselected(Tab tab, FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void onTabSelected(Tab tab, FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			ft.add(com.actionbarsherlock.R.id.abs__action_bar_container,
-					fragment, null);
-
-		}
-
-		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-
-		}
-
-	}
-
 }

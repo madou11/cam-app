@@ -12,25 +12,21 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.model.AbstractImageModel;
 
-public class ZoomActivity extends GeneralActivity implements OnClickListener {
+public class ZoomActivity extends CustomFragment implements OnClickListener {
 
 	private AbstractImageModel model;
 	private ImageView imageView;
-	private GoalmaniaContext ctx;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_zoom);
+		super.onCreate(savedInstanceState);
 
-		ctx = (GoalmaniaContext) getApplicationContext();
-
-		initInterface();
-		getIntentData();
+//		initInterface();
+//		getIntentData();
 		processActivity();
 	}
 
@@ -44,10 +40,6 @@ public class ZoomActivity extends GeneralActivity implements OnClickListener {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
-			return true;
-		case R.id.im_button_ajout:
-			System.out.println("ee");
-
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

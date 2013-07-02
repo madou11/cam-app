@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ws.munday.slidingmenu.test"
+    android:versionCode="2"
+    android:versionName="1.1">
+
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16" />
+
+    <application 
+        android:hardwareAccelerated="true"
+     	android:icon="@drawable/ic_launcher"
+     	android:allowBackup="true">
+
+        <activity
+            android:name=".TestActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:launchMode="singleTask" >
+		
+       	    <intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+       	    
+       	</activity>
+        
+        
+    </application>
+
+</manifest>

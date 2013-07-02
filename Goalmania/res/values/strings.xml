@@ -24,6 +24,8 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     
+    <string name="what_is_this">Bonjour ca va?</string>
+    <string name="responsive_explanation">Test Mac.</string>
     
-
+ 	<string name="attach">Attach</string>
 </resources>

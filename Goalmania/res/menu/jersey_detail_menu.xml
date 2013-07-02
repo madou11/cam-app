@@ -4,7 +4,9 @@
           android:showAsAction="always|withText"          
           android:title="title"
           android:icon="@drawable/icon_add_order"/>
-
+    
+    
+    
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
