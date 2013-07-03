@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.helper.DrawableRessourceHelper;
 import com.mac.android.goalmania.model.Club;
 import com.mac.android.goalmania.model.Jersey;
+import com.mac.android.goalmania.model.MenuItemModel;
 import com.mac.android.goalmania.model.Order;
 import com.mac.android.goalmania.model.OrderItem;
 
@@ -52,14 +54,14 @@ public class JerseyDetailActivity extends CustomFragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
-//		setLayoutIds(R.layout.ws_munday_slidingmenu_test_menu,
-//				R.layout.activity_gridview_generic);
-//		setAnimationDuration(300);
-//		setAnimationType(MENU_TYPE_SLIDEOVER);
+		setSlidingMenuContentId(R.layout.slidingmenu_menu_item);
+		setLayoutIds(R.layout.slidingmenu_menu,
+				R.layout.activity_jersey_detail);
+		setAnimationDuration(300);
+		setAnimationType(MENU_TYPE_SLIDEOVER);
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_jersey_detail);
+//		setContentView(R.layout.activity_jersey_detail);
 
 		ctx = (GoalmaniaContext) getApplicationContext();
 
@@ -80,7 +82,7 @@ public class JerseyDetailActivity extends CustomFragment {
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.jersey_detail_menu, menu);
+		inflater.inflate(R.menu.addorder_settings_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -243,5 +245,11 @@ public class JerseyDetailActivity extends CustomFragment {
 
 			// bar.addTab(bar.newTab().setText("mac"));
 		}
+	}
+	
+	@Override
+	protected void onSlidingMenuClick(AdapterView<?> a, View v, int position,
+			long id, MenuItemModel itemModel) {
+		System.out.println("popo");
 	}
 }

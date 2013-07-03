@@ -15,24 +15,30 @@
         android:theme="@style/Theme.Example" >
 
         <!-- android:theme="@style/AppTheme" -->
-        <activity android:name="com.mac.android.goalmania.GridViewActivity">
+        <activity android:name="com.mac.android.goalmania.GridViewActivity"
+             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mac.android.goalmania.MainActivity" >
-        </activity>
-        <activity android:name="com.mac.android.goalmania.ZoomActivity" >
+        <activity
+            android:name="com.mac.android.goalmania.JerseyDetailActivity"
+            android:label="@string/title_activity_jersey_detail" 
+             android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity> 
+        <activity android:name="com.mac.android.goalmania.ZoomActivity"
+             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
         <activity
             android:name="org.mac.android.ihm.activity.AnimationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
-        <activity
-            android:name="com.mac.android.goalmania.JerseyDetailActivity"
-            android:label="@string/title_activity_jersey_detail" >
+         <activity
+            android:name="com.mac.android.goalmania.OrderActivity"
+            android:label="@string/title_activity_jersey_detail" 
+             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
     </application>
 

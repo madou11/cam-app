@@ -3,25 +3,20 @@ package com.mac.android.goalmania;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import ws.munday.slidingmenu.R.layout;
-
-import com.mac.android.goalmania.R;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.view.DragEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.View.OnDragListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,9 +31,8 @@ import com.mac.android.goalmania.model.Championship;
 import com.mac.android.goalmania.model.Club;
 import com.mac.android.goalmania.model.Collectionable;
 import com.mac.android.goalmania.model.Football;
-import com.mac.android.goalmania.model.MenuItemModel;
 
-public class GridViewActivity extends CustomFragment implements OnClickListener {
+public class GridViewActivity extends CustomFragment {
 
 	private static boolean isFirstLoad = true;
 	private GridView gridView;
@@ -53,7 +47,7 @@ public class GridViewActivity extends CustomFragment implements OnClickListener 
 		// super.onCreate(savedInstanceState);
 		// setContentView(R.layout.activity_gridview_generic);
 		setSlidingMenuContentId(R.layout.slidingmenu_menu_item);
-		setLayoutIds(R.layout.slidingmenu_menu_item,
+		setLayoutIds(R.layout.slidingmenu_menu,
 				R.layout.activity_gridview_generic);
 		setAnimationDuration(300);
 		setAnimationType(MENU_TYPE_SLIDEOVER);
@@ -104,21 +98,22 @@ public class GridViewActivity extends CustomFragment implements OnClickListener 
 					}
 				}
 			});
-
-			v2.setBackgroundColor(getResources().getColor(R.color.white));
-
-			View v1 = findViewById(R.id.ws_munday_slidingmenu_menu_frame);
-
-			v1.setOnClickListener(new OnClickListener() {
-
+			
+			gridView.setOnDragListener(new OnDragListener() {
+				
 				@Override
-				public void onClick(View v) {
+				public boolean onDrag(View v, DragEvent event) {
 					if (ismIsLayoutShown()) {
 						toggleMenu();
+					} else {
+						//positionId = position;
+						view = v;
+						putIntentData();
 					}
+					return false;
 				}
 			});
-
+			
 			gridView.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View v,
 						int position, long id) {
@@ -141,7 +136,7 @@ public class GridViewActivity extends CustomFragment implements OnClickListener 
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.default_menu, menu);
+		inflater.inflate(R.menu.settings_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -234,10 +229,7 @@ public class GridViewActivity extends CustomFragment implements OnClickListener 
 		return football;
 	}
 
-	@Override
-	public void onClick(View v) {
-		System.out.println("test");
-	}
+	
 
 
 

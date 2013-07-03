@@ -1,11 +1,9 @@
 package com.mac.android.goalmania.adapter;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -22,6 +22,8 @@ public class OrderItem {
 	private int number;
 	@Element
 	private boolean patched = false;
+	@Element
+	private JerseySleeves sleeves;
 
 	public OrderItem() {
 		ref = UUID.randomUUID();
@@ -85,6 +87,14 @@ public class OrderItem {
 
 	public UUID getRef() {
 		return ref;
+	}
+
+	public JerseySleeves getSleeves() {
+		return sleeves;
+	}
+	
+	public void setSleeves(JerseySleeves sleeves) {
+		this.sleeves = sleeves;
 	}
 
 }

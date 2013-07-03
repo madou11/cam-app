@@ -7,6 +7,11 @@
     <string name="drawable_folder">drawable</string>
     <string name="jersey_resources">resources.xml</string>
     
+    
+    
+    <string name="icon_error">icon_error_image</string>
+    <string name="icon_validate">icon_validate_image</string>
+    
     <string name="team_name_label">Equipe</string>
     <string name="type_jersey_label">Type</string>
     <string name="year_jersey_label">Année</string>
@@ -16,7 +21,14 @@
     <string name="club_title">Clubs</string>
     <string name="team_title">Equipes</string>
     <string name="jersey_title">Maillots</string>
+    <string name="order_title">Commande</string>
+    <string name="order_subtitle">Selection</string>
+ 
     
+    <string name="order_flocking">Flocage : </string>
+    <string name="order_number">Numéro : </string>
+    <string name="order_size">Taille : </string>
+    <string name="order_sleeves">Manches : </string>
     
     
     <string name="title_activity_jersey_detail">JerseyDetailActivity</string>

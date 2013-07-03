@@ -45,15 +45,15 @@ public class DrawableRessourceHelper {
 		return context.getResources().getDrawable(drawableResource);
 	}
 	
-	public static int getDrawableIdByName( String name, Context context ) {
-		int drawableResource = context.getResources().getIdentifier(
-						name,
-						"drawable",
-						context.getPackageName());
-		if ( drawableResource == 0 ) {
-			throw new RuntimeException("Can't find drawable with name: " + name );
-		}
-		return drawableResource;
-	}
+//	public static int getDrawableIdByName( String name, Context context ) {
+//		int drawableResource = context.getResources().getIdentifier(
+//						name,
+//						"drawable",
+//						context.getPackageName());
+//		if ( drawableResource == 0 ) {
+//			throw new RuntimeException("Can't find drawable with name: " + name );
+//		}
+//		return drawableResource;
+//	}
 
 }

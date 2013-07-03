@@ -47,6 +47,7 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 	public static final String SL_IMAGE = "SL_MENU_IMAGE";
 	public static final String SL_TITLE = "SL_MENU_TITLE";
 	public static final String SL_DESCRIPTION = "SL_MENU_DESCRIPTION";
+	public static final String  SL_ACTIVITY_NAME = "SL_MENU_ACTIVITY_NAME";
 
 	protected Object currentModel;
 	protected ActionBar ab;
@@ -56,13 +57,29 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 
 	private boolean mIsLayoutShown = false;
 	private int mMenuWidth;
-	public static final String LOG_TAG = "SlidingMenuActivity";
 	private int mMenuLayoutId;
 	private int mContentLayoutId;
 	private long mAnimationDuration = 400;
-	private int mMaxMenuWidthDps = 375;
+	private int mMaxMenuWidthDps = 600;//375
+	
+	public int getmMaxMenuWidthDps() {
+		switch(this.getResources().getConfiguration().orientation){
+		
+		case Configuration.ORIENTATION_PORTRAIT:
+			mMaxMenuWidthDps = 600;
+			break;
+		case Configuration.ORIENTATION_LANDSCAPE:
+			mMaxMenuWidthDps = 1170;
+			break;
+			default:
+			mMaxMenuWidthDps = 600;
+			break;
+		}
+		return mMaxMenuWidthDps;
+	}
+
 	private int mMinMainWidthDps = 50;
-	private Interpolator mInterpolator = new DecelerateInterpolator(1.2f);
+	private Interpolator mInterpolator = new DecelerateInterpolator(1.4f);
 	private int mType = MENU_TYPE_SLIDING;
 	private boolean mSlideTitleBar = true;
 
@@ -252,6 +269,10 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 			map.put(SL_TITLE, menuItemModel.getTitle());
 			// on insère un élément description que l'on récupérera dans le
 			// textView
+			// description créé dans le fichier affichageitem.xml	
+			map.put(SL_ACTIVITY_NAME, menuItemModel.getActivityName());
+			// on insère un élément description que l'on récupérera dans le
+			// textView
 			// description créé dans le fichier affichageitem.xml
 			map.put(SL_DESCRIPTION, menuItemModel.getDescription());
 			// on insère la référence à l'image (convertit en String car
@@ -287,26 +308,47 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 				HashMap<String, String> map = (HashMap<String, String>) slidingMenuList
 						.getItemAtPosition(position);
 
-				MenuItemModel itemModel = new MenuItemModel(Integer
+				MenuItemModel itemModel = new MenuItemModel(map.get(SL_ACTIVITY_NAME), Integer
 						.parseInt(map.get(SL_IMAGE)), map.get(SL_TITLE), map
 						.get(SL_DESCRIPTION));
 
 				onSlidingMenuClick(a, v, position, id, itemModel);
+				
+				if(ismIsLayoutShown()){
+					toggleMenu();
+				}
 			}
 		});
 	}
 
 	
+//	protected abstract void onSlidingMenuClick(AdapterView<?> a, View v, int position,
+//			long id, MenuItemModel itemModel) ;
+	
 	protected void onSlidingMenuClick(AdapterView<?> a, View v, int position,
 			long id, MenuItemModel itemModel) {
-		System.out.println("otto");
+		
+		try {
+			
+			ClassLoader cl = Thread.currentThread().getContextClassLoader();
+			
+			Class<?> clazz = cl.loadClass(itemModel.getActivityName());
+			
+			if(! this.getClass().equals(clazz)){
+			Intent intent = new Intent(getApplicationContext(),	clazz);
+			startActivity(intent);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	protected List<MenuItemModel> getMenuListItem() {
 		System.out.println("toto");
-		MenuItemModel menuItem1 = new MenuItemModel(1, "Accueil", "liste des maillots");
-		MenuItemModel menuItem2 = new MenuItemModel(1, "Commande", "mes maillots");
-		MenuItemModel menuItem3 = new MenuItemModel(1, "Historique", "mes commandes");
+		MenuItemModel menuItem1 = new MenuItemModel("com.mac.android.goalmania.GridViewActivity", com.mac.android.goalmania.R.drawable.icon_search_home_menu, "Accueil", "liste des maillots");
+		MenuItemModel menuItem2 = new MenuItemModel("com.mac.android.goalmania.OrderActivity", com.mac.android.goalmania.R.drawable.icon_order_caddie_image_menu, "Commande", "mes maillots");
+		MenuItemModel menuItem3 = new MenuItemModel("com.mac.android.goalmania.OrderActivity", com.mac.android.goalmania.R.drawable.icon_history_menu, "Historique", "mes commandes");
 		
 		List<MenuItemModel> menuItems = new ArrayList<MenuItemModel>();
 		menuItems.add(menuItem1);
@@ -490,7 +532,6 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 		default:
 			initSlideOutMenu(isConfigChange);
 			break;
-
 		}
 	}
 
@@ -520,7 +561,7 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 
 		// make sure that the content doesn't slide all the way off screen
 		int minContentWidth = Utility.dipsToPixels(this, mMinMainWidthDps);
-		mMenuWidth = Math.min(x - minContentWidth, mMaxMenuWidthDps);
+		mMenuWidth = Math.min(x - minContentWidth, getmMaxMenuWidthDps());
 
 		// update sizes and margins for sliding menu
 		RelativeLayout.LayoutParams mp = new RelativeLayout.LayoutParams(
@@ -583,7 +624,7 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 
 		// make sure that the content doesn't slide all the way off screen
 		int minContentWidth = Utility.dipsToPixels(this, mMinMainWidthDps);
-		mMenuWidth = Math.min(x - minContentWidth, mMaxMenuWidthDps);
+		mMenuWidth = Math.min(x - minContentWidth, getmMaxMenuWidthDps());
 
 		// update sizes and margins for sliding menu
 		menu.setLayoutParams(new RelativeLayout.LayoutParams(mMenuWidth,
