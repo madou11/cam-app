@@ -10,10 +10,7 @@ import org.simpleframework.xml.core.Persister;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -87,33 +84,6 @@ public class GridViewActivity extends CustomFragment {
 					(List<AbstractImageModel>) ((Collectionable) model)
 							.getItems()));
 
-			View v2 = findViewById(R.id.ws_munday_slidingmenu_content_frame);
-
-			v2.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					if (ismIsLayoutShown()) {
-						toggleMenu();
-					}
-				}
-			});
-			
-			gridView.setOnDragListener(new OnDragListener() {
-				
-				@Override
-				public boolean onDrag(View v, DragEvent event) {
-					if (ismIsLayoutShown()) {
-						toggleMenu();
-					} else {
-						//positionId = position;
-						view = v;
-						putIntentData();
-					}
-					return false;
-				}
-			});
-			
 			gridView.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View v,
 						int position, long id) {

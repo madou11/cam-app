@@ -10,6 +10,11 @@ import ws.munday.slidingmenu.MarginAnimation;
 import ws.munday.slidingmenu.R;
 import ws.munday.slidingmenu.R.layout;
 import ws.munday.slidingmenu.Utility;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Point;
@@ -19,6 +24,7 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
@@ -32,11 +38,14 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.mac.android.goalmania.CustomFragment.DialogHelper.OnClickDialog;
+import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.model.MenuItemModel;
 
 public abstract class CustomFragment extends SherlockFragmentActivity {
@@ -47,7 +56,9 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 	public static final String SL_IMAGE = "SL_MENU_IMAGE";
 	public static final String SL_TITLE = "SL_MENU_TITLE";
 	public static final String SL_DESCRIPTION = "SL_MENU_DESCRIPTION";
-	public static final String  SL_ACTIVITY_NAME = "SL_MENU_ACTIVITY_NAME";
+	public static final String SL_ACTIVITY_NAME = "SL_MENU_ACTIVITY_NAME";
+
+	public static GoalmaniaContext ctx;
 
 	protected Object currentModel;
 	protected ActionBar ab;
@@ -60,18 +71,18 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 	private int mMenuLayoutId;
 	private int mContentLayoutId;
 	private long mAnimationDuration = 400;
-	private int mMaxMenuWidthDps = 600;//375
-	
+	private int mMaxMenuWidthDps = 600;// 375
+
 	public int getmMaxMenuWidthDps() {
-		switch(this.getResources().getConfiguration().orientation){
-		
+		switch (this.getResources().getConfiguration().orientation) {
+
 		case Configuration.ORIENTATION_PORTRAIT:
 			mMaxMenuWidthDps = 600;
 			break;
 		case Configuration.ORIENTATION_LANDSCAPE:
 			mMaxMenuWidthDps = 1170;
 			break;
-			default:
+		default:
 			mMaxMenuWidthDps = 600;
 			break;
 		}
@@ -178,6 +189,8 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		ctx = (GoalmaniaContext) getApplicationContext();
+
 		ab = getSupportActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 
@@ -195,6 +208,16 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 				menu.addView(li.inflate(mMenuLayoutId, null));
 
 				menu.setVisibility(View.GONE);
+
+				content.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						if (ismIsLayoutShown()) {
+							toggleMenu();
+						}
+					}
+				});
 
 			} else {
 
@@ -229,12 +252,21 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 				decor.addView(main);
 				menu.setVisibility(View.GONE);
 
+				content.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						if (ismIsLayoutShown()) {
+							toggleMenu();
+						}
+					}
+				});
 			}
 
 			initMenu(false);
 		}
 
-		if (mMenuLayoutId != 0  && smContentId != 0) {
+		if (mMenuLayoutId != 0 && smContentId != 0) {
 			initSlidingMenu();
 		}
 
@@ -247,8 +279,6 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 		initTitle(ab);
 	}
 
-	
-	
 	private void initSlidingMenu() {
 		// Récupération de la listview créée dans le fichier main.xml
 		slidingMenuList = (ListView) findViewById(com.mac.android.goalmania.R.id.listview_menu);
@@ -269,7 +299,7 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 			map.put(SL_TITLE, menuItemModel.getTitle());
 			// on insère un élément description que l'on récupérera dans le
 			// textView
-			// description créé dans le fichier affichageitem.xml	
+			// description créé dans le fichier affichageitem.xml
 			map.put(SL_ACTIVITY_NAME, menuItemModel.getActivityName());
 			// on insère un élément description que l'on récupérera dans le
 			// textView
@@ -288,7 +318,8 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 		// présent dans notre list (listItem) dans la vue affichageitem
 		SimpleAdapter mSchedule = new SimpleAdapter(
 				this.getBaseContext(),
-				listItem,smContentId,
+				listItem,
+				smContentId,
 				new String[] { SL_IMAGE, SL_TITLE, SL_DESCRIPTION },
 				new int[] { com.mac.android.goalmania.R.id.sliding_menu_img,
 						com.mac.android.goalmania.R.id.sliding_menu_titre,
@@ -308,55 +339,64 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 				HashMap<String, String> map = (HashMap<String, String>) slidingMenuList
 						.getItemAtPosition(position);
 
-				MenuItemModel itemModel = new MenuItemModel(map.get(SL_ACTIVITY_NAME), Integer
-						.parseInt(map.get(SL_IMAGE)), map.get(SL_TITLE), map
+				MenuItemModel itemModel = new MenuItemModel(map
+						.get(SL_ACTIVITY_NAME), Integer.parseInt(map
+						.get(SL_IMAGE)), map.get(SL_TITLE), map
 						.get(SL_DESCRIPTION));
 
 				onSlidingMenuClick(a, v, position, id, itemModel);
-				
-				if(ismIsLayoutShown()){
+
+				if (ismIsLayoutShown()) {
 					toggleMenu();
 				}
 			}
 		});
 	}
 
-	
-//	protected abstract void onSlidingMenuClick(AdapterView<?> a, View v, int position,
-//			long id, MenuItemModel itemModel) ;
-	
+	// protected abstract void onSlidingMenuClick(AdapterView<?> a, View v, int
+	// position,
+	// long id, MenuItemModel itemModel) ;
+
 	protected void onSlidingMenuClick(AdapterView<?> a, View v, int position,
 			long id, MenuItemModel itemModel) {
-		
+
 		try {
-			
+
 			ClassLoader cl = Thread.currentThread().getContextClassLoader();
-			
+
 			Class<?> clazz = cl.loadClass(itemModel.getActivityName());
-			
-			if(! this.getClass().equals(clazz)){
-			Intent intent = new Intent(getApplicationContext(),	clazz);
-			startActivity(intent);
+
+			if (!this.getClass().equals(clazz)) {
+				Intent intent = new Intent(getApplicationContext(), clazz);
+				startActivity(intent);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	protected List<MenuItemModel> getMenuListItem() {
 		System.out.println("toto");
-		MenuItemModel menuItem1 = new MenuItemModel("com.mac.android.goalmania.GridViewActivity", com.mac.android.goalmania.R.drawable.icon_search_home_menu, "Accueil", "liste des maillots");
-		MenuItemModel menuItem2 = new MenuItemModel("com.mac.android.goalmania.OrderActivity", com.mac.android.goalmania.R.drawable.icon_order_caddie_image_menu, "Commande", "mes maillots");
-		MenuItemModel menuItem3 = new MenuItemModel("com.mac.android.goalmania.OrderActivity", com.mac.android.goalmania.R.drawable.icon_history_menu, "Historique", "mes commandes");
-		
+		MenuItemModel menuItem1 = new MenuItemModel(
+				"com.mac.android.goalmania.GridViewActivity",
+				com.mac.android.goalmania.R.drawable.icon_search_home_menu,
+				"Accueil", "liste des maillots");
+		MenuItemModel menuItem2 = new MenuItemModel(
+				"com.mac.android.goalmania.OrderActivity",
+				com.mac.android.goalmania.R.drawable.icon_order_caddie_image_menu,
+				"Commande", "mes maillots");
+		MenuItemModel menuItem3 = new MenuItemModel(
+				"com.mac.android.goalmania.OrderActivity",
+				com.mac.android.goalmania.R.drawable.icon_history_menu,
+				"Historique", "mes commandes");
+
 		List<MenuItemModel> menuItems = new ArrayList<MenuItemModel>();
 		menuItems.add(menuItem1);
 		menuItems.add(menuItem2);
 		menuItems.add(menuItem3);
 		return menuItems;
 	}
-
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -634,6 +674,158 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 		if (isConfigChange) {
 			mIsLayoutShown = !mIsLayoutShown;
 			toggleMenu();
+		}
+	}
+
+	public static class DialogHelper {
+
+		private static DialogHelper self;
+		
+		public static DialogHelper getIstance(){
+			if(self == null){
+				self = new DialogHelper();
+			}
+			return self;
+		}
+		private DialogHelper() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public class DialogProperties {
+			String title;
+			String message;
+			Boolean cancelable;
+			DialogOnClickListener okListener;
+			DialogOnClickListener cancelListener;
+
+			public DialogProperties(String title, String message,
+					Boolean cancelable, DialogOnClickListener okListener,
+					DialogOnClickListener cancelListener) {
+				super();
+				this.title = title;
+				this.message = message;
+				this.cancelable = cancelable;
+				this.okListener = okListener;
+				this.cancelListener = cancelListener;
+			}
+
+			public String getTitle() {
+				return title;
+			}
+
+			public void setTitle(String title) {
+				this.title = title;
+			}
+
+			public String getMessage() {
+				return message;
+			}
+
+			public void setMessage(String message) {
+				this.message = message;
+			}
+
+			public Boolean isCancelable() {
+				return cancelable;
+			}
+
+			public void setCancelable(Boolean cancelable) {
+				this.cancelable = cancelable;
+			}
+
+			public DialogOnClickListener getOkListener() {
+				return okListener;
+			}
+
+			public void setOkListener(DialogOnClickListener listener) {
+				this.okListener = listener;
+			}
+
+			public DialogOnClickListener getCancelListener() {
+				return cancelListener;
+			}
+
+			public void setCancelListener(DialogOnClickListener cancelListener) {
+				this.cancelListener = cancelListener;
+			}
+
+		}
+		
+		public static  Dialog onCreateDialog(int id,
+				DialogProperties dialogProperties,
+				OnContentLayout onContentLayout) {
+			
+			return onCreateDialog(id, -1, dialogProperties, onContentLayout);
+		}
+
+		public static Dialog onCreateDialog(int id, int layoutId,
+				DialogProperties dialogProperties,
+				OnContentLayout onContentLayout) {
+			Dialog dialog = null;
+			switch (id) {
+			case 1:
+				// Create out AlterDialog
+				AlertDialog.Builder builder = new AlertDialog.Builder(CustomFragment.ctx.getApplicationContext());
+				builder.setMessage(dialogProperties.getMessage());
+				builder.setTitle(dialogProperties.getTitle());
+				builder.setCancelable(dialogProperties.isCancelable());
+				builder.setPositiveButton(dialogProperties.getOkListener()
+						.getLabel(), dialogProperties.getOkListener());
+				builder.setNegativeButton(dialogProperties.getCancelListener()
+						.getLabel(), dialogProperties.getCancelListener());
+				dialog = builder.create();
+				
+				if(layoutId != -1){
+					dialog.setContentView(layoutId);
+				}
+				onContentLayout.dialogContent(dialog);
+
+				dialog.show();
+			}
+			return dialog;
+		}
+
+		public interface OnContentLayout {
+			void dialogContent(Dialog dialog);
+		}
+		public interface OnClickDialog{
+			void onClickDialog(DialogInterface dialog, int which);
+			}
+
+		public class DialogOnClickListener implements
+				DialogInterface.OnClickListener {
+
+			private String label;
+			private OnClickDialog clickDialog;
+			private Activity activity;
+
+			public DialogOnClickListener(OnClickDialog clickDialog, Activity activity, String label) {
+				this.label = label;
+				this.activity = activity;
+				this.clickDialog = clickDialog;
+			}
+
+			public void onClick(DialogInterface dialog, int which) {
+				Toast.makeText(ctx, "Activity will continue", Toast.LENGTH_LONG)
+						.show();
+				clickDialog.onClickDialog(dialog, which);
+
+			}
+			
+			public Activity getActivity() {
+				return activity;
+			}
+			
+			public String getLabel() {
+				return label;
+			}
+			
+			/**
+			 * @return the clickDialog
+			 */
+			public OnClickDialog getClickDialog() {
+				return clickDialog;
+			}
 		}
 	}
 }
