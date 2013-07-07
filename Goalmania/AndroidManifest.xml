@@ -25,7 +25,6 @@
         </activity>
         <activity
             android:name="com.mac.android.goalmania.JerseyDetailActivity"
-            android:label="@string/title_activity_jersey_detail" 
              android:configChanges="orientation|keyboardHidden|screenSize">
         </activity> 
         <activity android:name="com.mac.android.goalmania.ZoomActivity"
@@ -37,7 +36,10 @@
         </activity>
          <activity
             android:name="com.mac.android.goalmania.OrderActivity"
-            android:label="@string/title_activity_jersey_detail" 
+             android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+         <activity
+            android:name="com.mac.android.goalmania.OrderDetailItemActivity"
              android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
     </application>

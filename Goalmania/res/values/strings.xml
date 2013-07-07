@@ -23,12 +23,17 @@
     <string name="jersey_title">Maillots</string>
     <string name="order_title">Commande</string>
     <string name="order_subtitle">Selection</string>
+    
+    <string name="order_item_title">Élement commande</string>
+    <string name="lb_button_remove_orderitem">Supprimer</string>
+    <string name="lb_button_validate_orderitem">Valider</string>
  
     
     <string name="order_flocking">Flocage : </string>
     <string name="order_number">Numéro : </string>
     <string name="order_size">Taille : </string>
     <string name="order_sleeves">Manches : </string>
+    <string name="order_team">Equipe : </string>
     
     
     <string name="title_activity_jersey_detail">JerseyDetailActivity</string>

@@ -1,16 +1,20 @@
 package com.mac.android.goalmania;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.Serializable;
+import java.util.List;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -22,14 +26,12 @@ import com.mac.android.goalmania.CustomFragment.DialogHelper.OnClickDialog;
 import com.mac.android.goalmania.CustomFragment.DialogHelper.OnContentLayout;
 import com.mac.android.goalmania.adapter.LazyAdapter;
 import com.mac.android.goalmania.context.GoalmaniaContext;
-import com.mac.android.goalmania.model.MenuItemModel;
+import com.mac.android.goalmania.model.OrderItem;
 
 public class OrderActivity extends CustomFragment {
 
 	private ListView list;
 	private LazyAdapter adapter;
-
-	ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -87,7 +89,7 @@ public class OrderActivity extends CustomFragment {
 	@Override
 	protected void processActivity() {
 
-		GoalmaniaContext ctx = (GoalmaniaContext) getApplicationContext();
+		final GoalmaniaContext ctx = (GoalmaniaContext) getApplicationContext();
 
 		// Getting adapter by passing xml data ArrayList
 		adapter = new LazyAdapter(this, ctx.getOrder().getItems());
@@ -98,13 +100,57 @@ public class OrderActivity extends CustomFragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+					final int position, long id) {
 				if (ismIsLayoutShown()) {
 					toggleMenu();
 				} else {
-					// positionId = position;
-					// view = v;
-					// putIntentData();
+
+					OrderItem item = ctx.getOrder().getItems().get(position);
+
+					final Handler handler = new Handler() {
+
+						public void handleMessage(Message msg) {
+
+							OrderItem aResponse = (OrderItem) msg.obj;
+
+							list.setAdapter(adapter);
+							 adapter.notifyDataSetChanged();	
+							
+//							if ((null != aResponse)) {
+//								// tester si juste 
+//								// list.setAdapter(adapter);
+//								// adapter.notifyDataSetChanged();
+//								// du coup pas besoin du tester
+//								
+//								OrderItem iOrderItem = (OrderItem) adapter
+//										.getItem(position);
+//
+//								iOrderItem = aResponse;
+//
+//								list.setAdapter(adapter);
+//								adapter.notifyDataSetChanged();
+//								// ALERT MESSAGE
+//								Toast.makeText(getBaseContext(),
+//										"Server Response: " + aResponse,
+//										Toast.LENGTH_SHORT).show();
+//							} else {
+//
+//								adapter.notifyDataSetInvalidated();
+//								// ALERT MESSAGE
+//								list.setAdapter(adapter);
+//								Toast.makeText(getBaseContext(),
+//										"Not Got Response From Server.",
+//										Toast.LENGTH_SHORT).show();
+//							}
+						}
+					};
+
+					Intent intent = new Intent(getApplicationContext(),
+							OrderDetailItemActivity.class);
+					intent.putExtra("OrderItemDetail", (Serializable) item);
+
+					ctx.putDatas("handler", handler);
+					startActivity(intent);
 				}
 			}
 		});
@@ -123,37 +169,31 @@ public class OrderActivity extends CustomFragment {
 						@Override
 						public void onClickDialog(DialogInterface dialog,
 								int which) {
-							// TODO Auto-generated method stub
-
 							System.out.println("okok");
-							
 						}
 					};
 
 					OnContentLayout onContentLayout = new OnContentLayout() {
-
 						@Override
 						public void dialogContent(Dialog dialog) {
-							// TODO Auto-generated method stub
 							System.out.println("okok");
 						}
 					};
 
-					DialogOnClickListener okListener = DialogHelper.getIstance().new DialogOnClickListener(
+					DialogOnClickListener okListener = DialogHelper
+							.getIstance().new DialogOnClickListener(
 							onClickDialog, OrderActivity.this, "Valider");
-					
-					DialogOnClickListener cancelListener = DialogHelper.getIstance().new DialogOnClickListener(
-							onClickDialog, OrderActivity.this, "S");
 
-					DialogProperties dialogProperties = DialogHelper.getIstance().new DialogProperties(
-							"Confirmation",
+					DialogOnClickListener cancelListener = DialogHelper
+							.getIstance().new DialogOnClickListener(
+							onClickDialog, OrderActivity.this, "Annuler");
+
+					DialogProperties dialogProperties = DialogHelper
+							.getIstance().new DialogProperties("Confirmation",
 							"Veuillez confirmer le maillot actuel.", true,
 							okListener, cancelListener);
 					DialogHelper.onCreateDialog(1, dialogProperties,
 							onContentLayout);
-					// positionId = position;
-					// view = v;
-					// putIntentData();
 
 				}
 				return false;
@@ -168,11 +208,4 @@ public class OrderActivity extends CustomFragment {
 				R.drawable.icon_image_order_menu));
 		bar.setSubtitle(R.string.order_subtitle);
 	}
-
-	@Override
-	protected void onSlidingMenuClick(AdapterView<?> a, View v, int position,
-			long id, MenuItemModel itemModel) {
-		super.onSlidingMenuClick(a, v, position, id, itemModel);
-	}
-
 }

@@ -1,11 +1,17 @@
 package com.mac.android.goalmania.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
-public class OrderItem {
+public class OrderItem implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5292041833800461278L;
+	
 	@Attribute
 	private UUID ref;
 	@Attribute(required = false)
@@ -19,11 +25,13 @@ public class OrderItem {
 	@Element
 	private String flocking;
 	@Element
-	private int number;
+	private Integer number;
 	@Element
 	private boolean patched = false;
 	@Element
 	private JerseySleeves sleeves;
+	@Element
+	private boolean isValidate = false;
 
 	public OrderItem() {
 		ref = UUID.randomUUID();
@@ -69,11 +77,11 @@ public class OrderItem {
 		this.flocking = flocking;
 	}
 
-	public int getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 
@@ -95,6 +103,20 @@ public class OrderItem {
 	
 	public void setSleeves(JerseySleeves sleeves) {
 		this.sleeves = sleeves;
+	}
+
+	/**
+	 * @return the isValidate
+	 */
+	public boolean isValidate() {
+		return isValidate;
+	}
+
+	/**
+	 * @param isValidate the isValidate to set
+	 */
+	public void setValidate(boolean isValidate) {
+		this.isValidate = isValidate;
 	}
 
 }

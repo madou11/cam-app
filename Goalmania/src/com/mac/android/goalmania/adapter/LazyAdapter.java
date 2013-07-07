@@ -1,5 +1,6 @@
 package com.mac.android.goalmania.adapter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import android.content.Context;
@@ -15,9 +16,13 @@ import com.mac.android.goalmania.R;
 import com.mac.android.goalmania.helper.DrawableRessourceHelper;
 import com.mac.android.goalmania.model.OrderItem;
 
-public class LazyAdapter extends BaseAdapter {
+public class LazyAdapter extends BaseAdapter implements Serializable{
 	private Context context;
 	private final List<OrderItem> items;
+
+	public List<OrderItem> getItems() {
+		return items;
+	}
 
 	public LazyAdapter(Context context, List<OrderItem> items) {
 		this.context = context;
@@ -56,7 +61,7 @@ public class LazyAdapter extends BaseAdapter {
 				TextView textViewSize = (TextView) listView
 						.findViewById(R.id.size);
 				if (model.getSize() != null) {					
-					textViewSize.setText(resources.getString(R.string.order_size) + " " + model.getSize().name());
+					textViewSize.setText(resources.getString(R.string.order_size) + " " + model.getSize().value());
 				}else{
 					textViewSize.setText(resources.getString(R.string.order_size) + " " + null);
 				}
@@ -81,11 +86,9 @@ public class LazyAdapter extends BaseAdapter {
 				ImageView imageViewValidation = (ImageView) listView
 						.findViewById(R.id.order_state_validation);
 
-				boolean isValid = validate(model);
-
 				int iconValidatorId;
 
-				if (isValid) {
+				if (model.isValidate()) {
 					iconValidatorId = R.string.icon_validate;
 				} else {
 					iconValidatorId = R.string.icon_error;
@@ -106,21 +109,17 @@ public class LazyAdapter extends BaseAdapter {
 
 		return listView;
 	}
-
-	private boolean validate(OrderItem model) {
-		return (isNotNullOrEmpty(model.getFlocking())
-				&& isNotNullOrEmpty("" + model.getNumber())
-				&& isNotNullOrEmpty(model.getSleeves().name()) && isNotNullOrEmpty(model
-				.getSize().name()));
+	
+	public boolean updateItem(OrderItem  item){
+		for (OrderItem orderItem : items) {
+			if(orderItem.getRef().equals(item.getRef())){
+				orderItem = item;
+				return true;
+			}
+		}
+		return false;
 	}
-
-	private boolean isNullOrEmpty(String value) {
-		return ( value == null || value.isEmpty() || value.equals(""));
-	}
-
-	private boolean isNotNullOrEmpty(String value) {
-		return !isNullOrEmpty(value);
-	}
+	
 
 	@Override
 	public int getCount() {

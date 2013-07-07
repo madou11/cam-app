@@ -199,8 +199,4 @@ public class GridViewActivity extends CustomFragment {
 		return football;
 	}
 
-	
-
-
-
 }
