@@ -93,7 +93,7 @@ public class JerseyDetailActivity extends CustomFragment {
 			return true;
 		case R.id.im_button_ajout:
 			OrderItem orderItem = new OrderItem();
-			orderItem.setJersey(mSectionsPagerAdapter.getDummySectionFragment().getJersey());
+			orderItem.setJersey(mSectionsPagerAdapter.getCurrentItem());
 			Order order = ctx.getOrder();
 			
 			order.getItems().add(orderItem);
@@ -113,13 +113,17 @@ public class JerseyDetailActivity extends CustomFragment {
 
 		private List<Jersey> list;
 		private DummySectionFragment fragment;
-		public DummySectionFragment getDummySectionFragment() {
-			return fragment;
-		}
+		
 
 		public SectionsPagerAdapter(FragmentManager fm, List<Jersey> list) {
 			super(fm);
 			this.list = list;
+		}
+		
+		
+		public Jersey getCurrentItem(){
+			int index = mViewPager.getCurrentItem();
+			return list.get(index);
 		}
 
 		@Override
@@ -157,9 +161,6 @@ public class JerseyDetailActivity extends CustomFragment {
 		 * fragment.
 		 */
 		private Jersey jersey;
-		public Jersey getJersey() {
-			return jersey;
-		}
 
 		public DummySectionFragment() {
 		}
@@ -209,7 +210,7 @@ public class JerseyDetailActivity extends CustomFragment {
 	@Override
 	protected void initInterface() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

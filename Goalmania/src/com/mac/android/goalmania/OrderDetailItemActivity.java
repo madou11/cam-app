@@ -3,6 +3,7 @@ package com.mac.android.goalmania;
 import java.util.List;
 import java.util.UUID;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,7 @@ public class OrderDetailItemActivity extends CustomFragment {
 	private Button buttonValidate;
 	private OrderItem model;
 	private Handler handler;
+	private Activity orderActivity;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,7 @@ public class OrderDetailItemActivity extends CustomFragment {
 			model = (OrderItem) bundle.getSerializable("OrderItemDetail");
 
 			handler = (Handler) ctx.getDatas("handler");
+			orderActivity = (Activity) ctx.getDatas("OrderActivity");
 		}
 	}
 
@@ -199,6 +202,8 @@ public class OrderDetailItemActivity extends CustomFragment {
 					message.obj = tempDeletedItem;
 
 					handler.handleMessage(message);
+					orderActivity.invalidateOptionsMenu();
+					
 					finish();
 				}else{
 					System.exit(-1);
@@ -261,6 +266,8 @@ public class OrderDetailItemActivity extends CustomFragment {
 					Message message = new Message();
 					message.obj = model;
 					handler.handleMessage(message);
+					orderActivity.invalidateOptionsMenu();
+					
 					finish();
 				} else {
 					Toast.makeText(

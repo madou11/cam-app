@@ -17,9 +17,14 @@ import com.mac.android.goalmania.helper.DrawableRessourceHelper;
 import com.mac.android.goalmania.model.OrderItem;
 
 public class LazyAdapter extends BaseAdapter implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3489988071989552199L;
 	private Context context;
 	private final List<OrderItem> items;
-
+	private View listView = null;
+	
 	public List<OrderItem> getItems() {
 		return items;
 	}
@@ -30,11 +35,10 @@ public class LazyAdapter extends BaseAdapter implements Serializable{
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-
 		LayoutInflater inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-		View listView = null;
+		
+		
 
 		if (convertView == null) {
 			Resources resources = this.context.getResources();
@@ -110,17 +114,6 @@ public class LazyAdapter extends BaseAdapter implements Serializable{
 		return listView;
 	}
 	
-	public boolean updateItem(OrderItem  item){
-		for (OrderItem orderItem : items) {
-			if(orderItem.getRef().equals(item.getRef())){
-				orderItem = item;
-				return true;
-			}
-		}
-		return false;
-	}
-	
-
 	@Override
 	public int getCount() {
 		return this.items.size();

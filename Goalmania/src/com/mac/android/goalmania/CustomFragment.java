@@ -12,7 +12,6 @@ import ws.munday.slidingmenu.R.layout;
 import ws.munday.slidingmenu.Utility;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,7 +43,6 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.mac.android.goalmania.CustomFragment.DialogHelper.OnClickDialog;
 import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.model.MenuItemModel;
 
@@ -377,7 +375,6 @@ public abstract class CustomFragment extends SherlockFragmentActivity {
 	}
 
 	protected List<MenuItemModel> getMenuListItem() {
-		System.out.println("toto");
 		MenuItemModel menuItem1 = new MenuItemModel(
 				"com.mac.android.goalmania.GridViewActivity",
 				com.mac.android.goalmania.R.drawable.icon_search_home_menu,

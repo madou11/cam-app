@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -14,7 +13,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.mac.android.goalmania.model.AbstractImageModel;
-import com.mac.android.goalmania.model.MenuItemModel;
 
 public class ZoomActivity extends CustomFragment implements OnClickListener {
 
@@ -34,7 +32,7 @@ public class ZoomActivity extends CustomFragment implements OnClickListener {
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.default_menu, menu);
+		inflater.inflate(R.menu.settings_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -100,11 +98,5 @@ public class ZoomActivity extends CustomFragment implements OnClickListener {
 	@Override
 	protected void initTitle(ActionBar bar) {
 		bar.setTitle(R.string.jersey_title);
-	}
-	
-	@Override
-	protected void onSlidingMenuClick(AdapterView<?> a, View v, int position,
-			long id, MenuItemModel itemModel) {
-		System.out.println("popo");
 	}
 }

@@ -1,9 +1,14 @@
 package com.mac.android.goalmania;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Dialog;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,13 +25,11 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.mac.android.goalmania.CustomFragment.DialogHelper.DialogOnClickListener;
-import com.mac.android.goalmania.CustomFragment.DialogHelper.DialogProperties;
-import com.mac.android.goalmania.CustomFragment.DialogHelper.OnClickDialog;
-import com.mac.android.goalmania.CustomFragment.DialogHelper.OnContentLayout;
 import com.mac.android.goalmania.adapter.LazyAdapter;
 import com.mac.android.goalmania.context.GoalmaniaContext;
 import com.mac.android.goalmania.model.OrderItem;
+import com.mac.android.goalmania.utils.AsyncInvokeURLTask;
+import com.mac.android.goalmania.utils.AsyncInvokeURLTask.OnPostExecuteListener;
 
 public class OrderActivity extends CustomFragment {
 
@@ -49,14 +52,22 @@ public class OrderActivity extends CustomFragment {
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.settings_menu, menu);
+		if (orderIsValid()) {
+			inflater.inflate(R.menu.validationorder_settings_menu, menu);
+		} else {
+			inflater.inflate(R.menu.settings_menu, menu);
+		}
 		return super.onCreateOptionsMenu(menu);
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
+
 			toggleMenu();
+			return true;
+		case R.id.im_button_validate:
+			// envoi ws
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -110,38 +121,7 @@ public class OrderActivity extends CustomFragment {
 					final Handler handler = new Handler() {
 
 						public void handleMessage(Message msg) {
-
-							OrderItem aResponse = (OrderItem) msg.obj;
-
-							list.setAdapter(adapter);
-							 adapter.notifyDataSetChanged();	
-							
-//							if ((null != aResponse)) {
-//								// tester si juste 
-//								// list.setAdapter(adapter);
-//								// adapter.notifyDataSetChanged();
-//								// du coup pas besoin du tester
-//								
-//								OrderItem iOrderItem = (OrderItem) adapter
-//										.getItem(position);
-//
-//								iOrderItem = aResponse;
-//
-//								list.setAdapter(adapter);
-//								adapter.notifyDataSetChanged();
-//								// ALERT MESSAGE
-//								Toast.makeText(getBaseContext(),
-//										"Server Response: " + aResponse,
-//										Toast.LENGTH_SHORT).show();
-//							} else {
-//
-//								adapter.notifyDataSetInvalidated();
-//								// ALERT MESSAGE
-//								list.setAdapter(adapter);
-//								Toast.makeText(getBaseContext(),
-//										"Not Got Response From Server.",
-//										Toast.LENGTH_SHORT).show();
-//							}
+							OrderActivity.this.restartActivity();
 						}
 					};
 
@@ -150,6 +130,7 @@ public class OrderActivity extends CustomFragment {
 					intent.putExtra("OrderItemDetail", (Serializable) item);
 
 					ctx.putDatas("handler", handler);
+					ctx.putDatas("OrderActivity", OrderActivity.this);
 					startActivity(intent);
 				}
 			}
@@ -164,36 +145,99 @@ public class OrderActivity extends CustomFragment {
 					toggleMenu();
 				} else {
 
-					OnClickDialog onClickDialog = new OnClickDialog() {
+					AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+							OrderActivity.this);
 
-						@Override
-						public void onClickDialog(DialogInterface dialog,
-								int which) {
-							System.out.println("okok");
-						}
-					};
+					// Setting Dialog Title
+					alertDialog2.setTitle("Envoi de la commande...");
 
-					OnContentLayout onContentLayout = new OnContentLayout() {
-						@Override
-						public void dialogContent(Dialog dialog) {
-							System.out.println("okok");
-						}
-					};
+					// Setting Dialog Message
+					alertDialog2
+							.setMessage("Voullez-vous envoyer votre commande ?");
 
-					DialogOnClickListener okListener = DialogHelper
-							.getIstance().new DialogOnClickListener(
-							onClickDialog, OrderActivity.this, "Valider");
+					// Setting Icon to Dialog
+					alertDialog2.setIcon(R.drawable.icon_upload_image);
 
-					DialogOnClickListener cancelListener = DialogHelper
-							.getIstance().new DialogOnClickListener(
-							onClickDialog, OrderActivity.this, "Annuler");
+					// Setting Positive "Yes" Btn
+					alertDialog2.setPositiveButton("YES",
+							new DialogInterface.OnClickListener() {
+								public void onClick(final DialogInterface dialog,
+										int which) {
+									// Write your code here to execute after
+									// dialog
 
-					DialogProperties dialogProperties = DialogHelper
-							.getIstance().new DialogProperties("Confirmation",
-							"Veuillez confirmer le maillot actuel.", true,
-							okListener, cancelListener);
-					DialogHelper.onCreateDialog(1, dialogProperties,
-							onContentLayout);
+									ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
+											2);
+									nameValuePairs.add(new BasicNameValuePair(
+											"command", "do_get_shop_list"));
+									nameValuePairs.add(new BasicNameValuePair(
+											"arg1", String.valueOf(1)));
+
+									final ProgressDialog simpleWaitDialog = new ProgressDialog(
+											OrderActivity.this);
+
+									AsyncInvokeURLTask task = null;
+									try {
+										task = new AsyncInvokeURLTask(
+												nameValuePairs,
+												new OnPostExecuteListener() {
+													@Override
+													public void onPostExecute(
+															String result) {
+
+														Toast.makeText(
+																getApplicationContext(),
+																"Envoi terminé avec succès",
+																Toast.LENGTH_SHORT)
+																.show();
+
+														simpleWaitDialog
+																.dismiss();
+														dialog.cancel();
+														
+													}
+
+													@Override
+													public void onDoingBackground(
+															String result) {
+														// TODO Auto-generated
+														// method stub
+
+													}
+
+													@Override
+													public void onPreExecute() {
+														simpleWaitDialog
+																.show(OrderActivity.this,
+																		"Envoi de la commande", "Patienter...");
+
+													}
+												});
+									} catch (Exception e) {
+										Toast.makeText(
+												getApplicationContext(),
+												"Echec envoi.\nProblème de transmission.",
+												Toast.LENGTH_SHORT).show();
+									}
+									task.execute();
+								}
+							});
+					// Setting Negative "NO" Btn
+					alertDialog2.setNegativeButton("NO",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// Write your code here to execute after
+									// dialog
+									Toast.makeText(getApplicationContext(),
+											"You clicked on NO",
+											Toast.LENGTH_SHORT).show();
+									dialog.cancel();
+								}
+							});
+
+					// Showing Alert Dialog
+					alertDialog2.show();
 
 				}
 				return false;
@@ -208,4 +252,20 @@ public class OrderActivity extends CustomFragment {
 				R.drawable.icon_image_order_menu));
 		bar.setSubtitle(R.string.order_subtitle);
 	}
+
+	private boolean orderIsValid() {
+		List<OrderItem> orderItems = ctx.getOrder().getItems();
+
+		if (orderItems == null || orderItems.size() == 0) {
+			return false;
+		}
+
+		for (OrderItem orderItem : orderItems) {
+			if (!orderItem.isValidate()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }
